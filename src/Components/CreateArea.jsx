@@ -1,4 +1,7 @@
 import React, {useState} from "react";
+import AddIcon from "@mui/icons-material/Add";
+import { Fab } from "@mui/material";
+import { Zoom } from "@mui/material";
 
 function CreateArea(props) {
     const [noteContent, setNoteContent]= useState({
@@ -16,6 +19,10 @@ function CreateArea(props) {
     }
     function handleClick(event){
         props.sendData(noteContent);
+        setNoteContent({
+            title : "",
+            content: ""
+        })
         event.preventDefault();
     }
   return (

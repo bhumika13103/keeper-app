@@ -17,12 +17,20 @@ function App(){
         console.log(noteData);
         
     }
+    function deleteNote(id){
+        console.log("trigger");
+        setNoteData(prevNotes =>{
+            return prevNotes.filter((noteItem,index)=>{
+                return index !== id;
+            })
+        })
+    }
     return (
         <div>
             <Header />
             <CreateArea sendData={handleFormData}/>
-            {noteData.map((note)=>{
-                return <Note title={note.title} content={note.content} />
+            {noteData.map((note,index)=>{
+                return <Note key={index} id={index} title={note.title} content={note.content} onDelete={deleteNote}/>
             })}
       
       <Footer />
